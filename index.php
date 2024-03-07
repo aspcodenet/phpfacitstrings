@@ -1,3 +1,9 @@
+<?php
+  $stringFiles = glob( dirname(__FILE__)  . "/string*.php");
+  $stringFiles = array_map(function(string $value): string {
+    return basename($value);
+}, $stringFiles)
+?>
 <!DOCTYPE html>
 <html lang="en"  data-theme="dark">
   <head> <!-- lista med barn -->
@@ -12,18 +18,33 @@
     <!-- Header -->
     <header class="container">
       <hgroup>
-        <h1>Tjena</h1>
-        <h2>Stefans coola PHP-klass</h2>
+        <h1>PHP med Stefan</h1>
+        <h2>Massa coola PHP-labbar</h2>
       </hgroup>
     </header>
     <!-- ./ Header -->
 
 
 
-
-
     <!-- Main -->
     <main class="container">
+
+    <h3>Labbar</h3>
+        <ul >
+    <?php
+      foreach($stringFiles as $oneFile) {?>
+        <li>
+          <a href="<?php echo $oneFile; ?>">
+            <?php echo $oneFile; ?>
+          </a>
+        </li>
+      
+        <?php
+              }
+    ?>
+        </ul>
+
+
 
       <!-- Preview -->
       <section id="preview">
