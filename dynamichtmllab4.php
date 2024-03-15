@@ -1,13 +1,24 @@
 <?php
-  $stringFiles = glob( dirname(__FILE__)  . "/string*.php");
-  $stringFiles = array_map(function(string $value): string {
-    return basename($value);
-}, $stringFiles);
+class Player{
+  public $id;
+  public $name;
+  public $jersey;
+  public $team;
 
-$dynamicHtmlFiles = glob( dirname(__FILE__)  . "/dynamichtml*.php");
-  $dynamicHtmlFiles = array_map(function(string $value): string {
-    return basename($value);
-}, $dynamicHtmlFiles);
+  function __construct($id, $name,$jersey, $team){
+    $this->id = $id;
+    $this->name = $name;
+    $this->jersey = $jersey;
+    $this->team = $team;
+  }
+};
+
+$players = [
+  new Player(1,"Foppa",21,"Modo"),
+  new Player(2,"Sudden",13,"Djurgården"),
+  new Player(3,"Zäta",40,"Timrå")
+];
+
 ?>
 <!DOCTYPE html>
 <html lang="en"  data-theme="dark">
@@ -17,6 +28,11 @@ $dynamicHtmlFiles = glob( dirname(__FILE__)  . "/dynamichtml*.php");
     <title>Stefans Exempel</title>
     <link rel="shortcut icon" href="https://picocss.com/favicon.ico" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+    <style>
+      .active{
+        color:green;
+      }
+    </style>
   </head>
 
   <body>
@@ -34,83 +50,11 @@ $dynamicHtmlFiles = glob( dirname(__FILE__)  . "/dynamichtml*.php");
     <!-- Main -->
     <main class="container">
 
-    <h3>Stringlabbar</h3>
-        <ul >
-    <?php
-      foreach($stringFiles as $oneFile) {?>
-        <li>
-          <a href="<?php echo $oneFile; ?>">
-            <?php echo $oneFile; ?>
-          </a>
-        </li>
-      
-        <?php
-              }
-    ?>
-        </ul>
-
-
-        <h3>Dynamic HTML labbar</h3>
-        <ul >
-    <?php
-      foreach($dynamicHtmlFiles as $oneFile) {?>
-        <li>
-          <a href="<?php echo $oneFile; ?>">
-            <?php echo $oneFile; ?>
-          </a>
-        </li>
-      
-        <?php
-              }
-    ?>
-        </ul>
-
-
-
-
-
-      <!-- Preview -->
-      <section id="preview">
-        <h2 id="testPreview">Preview</h2>
-        <p>
-          Sed ultricies dolor non ante vulputate hendrerit. Vivamus sit amet suscipit sapien. Nulla
-          iaculis eros a elit pharetra egestas.
-        </p>
-        <form>
-          <div class="grid">
-            <input
-              type="text"
-              name="firstname"
-              placeholder="First name"
-              aria-label="First name"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email address"
-              aria-label="Email address"
-              required
-            />
-            <button type="submit">Subscribe</button>
-          </div>
-          <fieldset>
-            <label for="terms">
-              <input type="checkbox" role="switch" id="terms" name="terms" />
-              I agree to the <a href="#" onclick="event.preventDefault()">Privacy Policy</a>
-            </label>
-          </fieldset>
-        </form>
-      </section>
-      <!-- ./ Preview -->
 
       <!-- Typography-->
       <section id="typography">
-        <h2>Typography</h2>
+        <h2>Today</h2>
         <p>
-          Aliquam lobortis vitae nibh nec rhoncus. Morbi mattis neque eget efficitur feugiat.
-          Vivamus porta nunc a erat mattis, mattis feugiat turpis pretium. Quisque sed tristique
-          felis.
         </p>
 
         <!-- Blockquote-->
@@ -339,46 +283,19 @@ $dynamicHtmlFiles = glob( dirname(__FILE__)  . "/dynamichtml*.php");
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Heading</th>
-                <th scope="col">Heading</th>
-                <th scope="col">Heading</th>
-                <th scope="col">Heading</th>
-                <th scope="col">Heading</th>
-                <th scope="col">Heading</th>
-                <th scope="col">Heading</th>
+                <th scope="col">Namn</th>
+                <th scope="col">Jersey</th>
+                <th scope="col">Team</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-              </tr>
+
+              <?php
+                foreach( $players as $player ) {
+                  echo "<tr><th scope=\"row\">$player->id</th><td>$player->name</td><td>$player->jersey</td><td>$player->team</td></tr>";
+                }
+
+              ?>
             </tbody>
           </table>
         </figure>

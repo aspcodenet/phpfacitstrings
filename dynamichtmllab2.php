@@ -1,13 +1,4 @@
 <?php
-  $stringFiles = glob( dirname(__FILE__)  . "/string*.php");
-  $stringFiles = array_map(function(string $value): string {
-    return basename($value);
-}, $stringFiles);
-
-$dynamicHtmlFiles = glob( dirname(__FILE__)  . "/dynamichtml*.php");
-  $dynamicHtmlFiles = array_map(function(string $value): string {
-    return basename($value);
-}, $dynamicHtmlFiles);
 ?>
 <!DOCTYPE html>
 <html lang="en"  data-theme="dark">
@@ -34,83 +25,15 @@ $dynamicHtmlFiles = glob( dirname(__FILE__)  . "/dynamichtml*.php");
     <!-- Main -->
     <main class="container">
 
-    <h3>Stringlabbar</h3>
-        <ul >
-    <?php
-      foreach($stringFiles as $oneFile) {?>
-        <li>
-          <a href="<?php echo $oneFile; ?>">
-            <?php echo $oneFile; ?>
-          </a>
-        </li>
-      
-        <?php
-              }
-    ?>
-        </ul>
-
-
-        <h3>Dynamic HTML labbar</h3>
-        <ul >
-    <?php
-      foreach($dynamicHtmlFiles as $oneFile) {?>
-        <li>
-          <a href="<?php echo $oneFile; ?>">
-            <?php echo $oneFile; ?>
-          </a>
-        </li>
-      
-        <?php
-              }
-    ?>
-        </ul>
 
 
 
 
 
-      <!-- Preview -->
-      <section id="preview">
-        <h2 id="testPreview">Preview</h2>
-        <p>
-          Sed ultricies dolor non ante vulputate hendrerit. Vivamus sit amet suscipit sapien. Nulla
-          iaculis eros a elit pharetra egestas.
-        </p>
-        <form>
-          <div class="grid">
-            <input
-              type="text"
-              name="firstname"
-              placeholder="First name"
-              aria-label="First name"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email address"
-              aria-label="Email address"
-              required
-            />
-            <button type="submit">Subscribe</button>
-          </div>
-          <fieldset>
-            <label for="terms">
-              <input type="checkbox" role="switch" id="terms" name="terms" />
-              I agree to the <a href="#" onclick="event.preventDefault()">Privacy Policy</a>
-            </label>
-          </fieldset>
-        </form>
-      </section>
-      <!-- ./ Preview -->
-
-      <!-- Typography-->
+      <!-- LAB 1-->
       <section id="typography">
-        <h2>Typography</h2>
+        <h2>Today</h2>
         <p>
-          Aliquam lobortis vitae nibh nec rhoncus. Morbi mattis neque eget efficitur feugiat.
-          Vivamus porta nunc a erat mattis, mattis feugiat turpis pretium. Quisque sed tristique
-          felis.
         </p>
 
         <!-- Blockquote-->
@@ -190,7 +113,39 @@ $dynamicHtmlFiles = glob( dirname(__FILE__)  . "/dynamichtml*.php");
 
         <!-- Medias-->
       </section>
-      <!-- ./ Typography-->
+     
+      <!-- ./ LAB 2 -->
+
+      <article id="article">
+        <h2>Dag</h2>
+        <img src="images/sunrise.png">
+        <p>
+          
+          Nu är det dag och det innebär att det är ljust bla ba
+        </p>        
+        <footer><small>Duis nec elit placerat, suscipit nibh quis, finibus neque.</small></footer>
+      </article>
+      <!-- ./ Article-->
+
+
+      <article id="article">
+        <h2>Natt</h2>
+        <img src="images/natt.jpg">
+        <p>
+          
+          Nu är det natt och det innebär att det är mörkt bla ba
+        </p>        
+        <footer><small>Duis nec elit placerat, suscipit nibh quis, finibus neque.</small></footer>
+      </article>
+
+
+
+      <!-- ./ Article-->
+
+
+
+
+
 
       <!-- Buttons-->
       <section id="buttons">
@@ -503,77 +458,6 @@ $dynamicHtmlFiles = glob( dirname(__FILE__)  . "/dynamichtml*.php");
 
  </div>
 
-
-
- <div class="container">
-
-  <form id="form1" novalidate method="post">
-     <input type="hidden"/>
-     <div class="form-group">
-         <label>required</label>
-         <input type="text" required class="form-control" />
-     </div>
-     <div class="form-group">
-         <label>minlength=5, but not required</label>
-         <input type="text" minlength="5" class="form-control" />
-     </div>
-     <div class="form-group">
-         <label>type=email, not required</label>
-         <input type="email" class="form-control" />
-     </div>
-
-     <div class="form-group">
-         <label>number, not required</label>
-         <input type="number" class="form-control" />
-     </div>
-
-     <div class="form-group">
-         <label>number, min=100, not required</label>
-         <input type="number" min="100" class="form-control" />
-     </div>
-
-     <div class="form-group">
-         <label>number, min=100, required</label>
-         <input type="number" min="100" required class="form-control" />
-     </div>
-
-     <div class="form-group">
-         <label>required</label>
-         <select required class="form-control">
-             <option value="">-----</option>
-             <option value="bd">Bangladesh</option>
-             <option value="us">USA</option>
-             <option value="ca">Canada</option>
-         </select>
-     </div>
-
-     <div class="form-group inline-label">
-         <p>required, min=2</p>
-         <input id="ch1" type="checkbox" min="2" name="future" required data-pristine-min-message="Select at least 2"/>
-         <label for="ch1">Dhaka</label><br/>
-         <input id="ch2" type="checkbox" min="2" name="future" required data-pristine-min-message="Select at least 2"/>
-         <label for="ch2">Sylhet</label><br/>
-         <input id="ch3" type="checkbox" min="2" name="future" required data-pristine-min-message="Select at least 2"/>
-         <label for="ch3">Khulna</label>
-     </div>
-
-     <div class="form-group">
-         <label>pattern=/^\d+\.\d{2}$/ (match decimal with 2 points), required</label>
-         <input type="number" pattern="/^\d+\.\d{2}$/g" required class="form-control" />
-     </div>
-
-     <div class="form-group">
-         <label>above field with custom message</label>
-         <input type="number" pattern="/^\d+\.\d{2}$/g" required data-pristine-pattern-message="The value must have 2 decimal points" class="form-control" />
-     </div>
-
-
-     <div class="form-group">
-         <input type="submit" value="Submit" class="btn"/>
-     </div>
-
-  </form>
-</div>
 
 
 
